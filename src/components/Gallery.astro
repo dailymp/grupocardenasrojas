@@ -1,0 +1,108 @@
+---
+const projects = [
+  {
+    src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80',
+    alt: 'Cocina moderna de alta gama con isla central y acabados en madera — Grupo Cárdenas Rojas',
+    label: 'Cocina de alta gama',
+    category: 'Cocinas',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&auto=format&fit=crop&q=80',
+    alt: 'Baño de lujo con suelo de mármol y ducha XXL — Grupo Cárdenas Rojas',
+    label: 'Baño de lujo',
+    category: 'Baños',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&auto=format&fit=crop&q=80',
+    alt: 'Vivienda moderna de obra nueva con fachada minimalista — Grupo Cárdenas Rojas',
+    label: 'Vivienda nueva',
+    category: 'Obra nueva',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&auto=format&fit=crop&q=80',
+    alt: 'Salón reformado con acabados premium y luz natural — Grupo Cárdenas Rojas',
+    label: 'Reforma integral',
+    category: 'Interiores',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80',
+    alt: 'Fachada exterior rehabilitada con materiales modernos — Grupo Cárdenas Rojas',
+    label: 'Rehabilitación fachada',
+    category: 'Exteriores',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=80',
+    alt: 'Dormitorio principal con armarios a medida y carpintería premium — Grupo Cárdenas Rojas',
+    label: 'Carpintería a medida',
+    category: 'Carpintería',
+  },
+];
+---
+
+<section
+  id="proyectos"
+  class="py-24 bg-warm-50 overflow-hidden"
+  aria-labelledby="gallery-title"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+      <div>
+        <div class="mb-4 reveal">
+          <span class="badge">Portfolio de proyectos</span>
+        </div>
+        <h2 id="gallery-title" class="section-title reveal">
+          Nuestros <span class="text-brand-600">trabajos</span> hablan<br class="hidden sm:block"/> por nosotros
+        </h2>
+        <div class="section-divider mt-4 reveal"></div>
+      </div>
+      <p class="section-subtitle text-left md:text-right reveal">
+        Cada proyecto es una muestra de nuestro compromiso con la calidad y la atención al detalle.
+      </p>
+    </div>
+
+    <!-- Grid gallery -->
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
+      {projects.map((p, i) => (
+        <div
+          class={`reveal group overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
+          style={`transition-delay:${i * 100}ms`}
+        >
+          <div class="relative overflow-hidden w-full h-full">
+            <img
+              src={p.src}
+              alt={p.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+            <!-- Overlay on hover -->
+            <div class="absolute inset-0 bg-brand-gradient opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end p-6">
+              <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <span class="text-xs text-brand-200 font-semibold uppercase tracking-widest">{p.category}</span>
+                <p class="font-display text-xl font-bold text-white uppercase mt-1">{p.label}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center reveal">
+      <a
+        href="https://wa.me/34632830169?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20m%C3%A1s%20proyectos%20y%20solicitar%20un%20presupuesto."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline-dark"
+        aria-label="Ver más proyectos y solicitar presupuesto"
+      >
+        Ver más proyectos
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

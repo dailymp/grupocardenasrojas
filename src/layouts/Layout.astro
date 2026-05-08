@@ -1,0 +1,163 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/hero-bg.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Grupo Cárdenas Rojas",
+  "description": "Reformas integrales con acabados de alta calidad. Construcción de viviendas personalizadas, cocinas, baños, carpintería y rehabilitación de fachadas.",
+  "url": "https://grupocardenasrojas.com",
+  "telephone": "+34632830169",
+  "email": "contacto@grupocardenasrojas.com",
+  "sameAs": [
+    "https://instagram.com/grupocardenasrojas",
+    "https://tiktok.com/@grupocardenasrojas"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "ES"
+  },
+  "image": "https://grupocardenasrojas.com/hero-bg.jpg",
+  "priceRange": "€€€",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00",
+    "closes": "19:00"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de construcción y reforma",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reformas integrales llave en mano" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Construcción de viviendas personalizadas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cocinas y baños a medida" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Carpintería y acabados interiores" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalaciones completas" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rehabilitación y mejora de fachadas" } }
+    ]
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Core SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="reformas integrales, construcción viviendas, cocinas a medida, baños a medida, carpintería interior, rehabilitación fachadas, instalaciones electricidad fontanería, obra nueva, reformas llave en mano, presupuesto reformas" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Grupo Cárdenas Rojas" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Grupo Cárdenas Rojas" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Sitemap -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</head>
+
+<body>
+  <slot />
+
+  <!-- Sticky navbar scroll behaviour -->
+  <script is:inline>
+    const nav = document.getElementById('navbar');
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const navLinks = document.querySelectorAll('.nav-link, .nav-logo-name');
+
+    function updateNav() {
+      if (!nav) return;
+      if (window.scrollY > 50) {
+        nav.classList.add('nav-scrolled');
+        nav.classList.remove('nav-transparent');
+        navLinks.forEach(l => {
+          l.classList.remove('text-warm-200');
+          l.classList.add('text-warm-700');
+        });
+      } else {
+        nav.classList.remove('nav-scrolled');
+        nav.classList.add('nav-transparent');
+        navLinks.forEach(l => {
+          l.classList.add('text-warm-200');
+          l.classList.remove('text-warm-700');
+        });
+      }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+    if (closeBtn && mobileMenu) {
+      closeBtn.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    }
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu && mobileMenu.classList.add('hidden'));
+    });
+  </script>
+
+  <!-- Scroll reveal observer -->
+  <script is:inline>
+    (function () {
+      const selectors = ['.reveal', '.reveal-left', '.reveal-right'];
+      const all = document.querySelectorAll(selectors.join(','));
+      if (!('IntersectionObserver' in window)) {
+        all.forEach(el => el.classList.add('visible'));
+        return;
+      }
+      const observer = new IntersectionObserver(
+        entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }),
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      all.forEach(el => observer.observe(el));
+    })();
+  </script>
+</body>
+</html>
