@@ -1,40 +1,46 @@
 ---
 const projects = [
   {
-    src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80',
-    alt: 'Cocina moderna de alta gama con isla central y acabados en madera — Grupo Cárdenas Rojas',
-    label: 'Cocina de alta gama',
-    category: 'Cocinas',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&auto=format&fit=crop&q=80',
-    alt: 'Baño de lujo con suelo de mármol y ducha XXL — Grupo Cárdenas Rojas',
-    label: 'Baño de lujo',
+    src: '/gallery/reforma-bano-madera-ducha-negra-valencia.jpg',
+    alt: 'Reforma de baño completo con mueble de madera, ducha con grifo negro mate y suelo imitación madera — Grupo Cárdenas Rojas Valencia',
+    label: 'Baño con ducha negra',
     category: 'Baños',
   },
   {
-    src: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&auto=format&fit=crop&q=80',
-    alt: 'Vivienda moderna de obra nueva con fachada minimalista — Grupo Cárdenas Rojas',
-    label: 'Vivienda nueva',
-    category: 'Obra nueva',
+    src: '/gallery/reforma-cocina-moderna-madera-valencia.jpg',
+    alt: 'Reforma de cocina moderna con muebles de madera de suelo a techo, horno negro integrado y encimera oscura — Grupo Cárdenas Rojas Valencia',
+    label: 'Cocina integral madera',
+    category: 'Cocinas',
   },
   {
-    src: 'https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&auto=format&fit=crop&q=80',
-    alt: 'Salón reformado con acabados premium y luz natural — Grupo Cárdenas Rojas',
-    label: 'Reforma integral',
-    category: 'Interiores',
+    src: '/gallery/reforma-bano-marmol-ducha-rainfall-valencia.jpg',
+    alt: 'Baño reformado con azulejos efecto mármol blanco y ducha tipo rainfall con grifo negro mate — Grupo Cárdenas Rojas Valencia',
+    label: 'Baño efecto mármol',
+    category: 'Baños',
   },
   {
-    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&auto=format&fit=crop&q=80',
-    alt: 'Fachada exterior rehabilitada con materiales modernos — Grupo Cárdenas Rojas',
-    label: 'Rehabilitación fachada',
-    category: 'Exteriores',
+    src: '/gallery/reforma-bano-lavabo-espejo-marmol-valencia.jpg',
+    alt: 'Mueble de baño blanco con lavabo integrado, espejo retroiluminado y azulejos efecto mármol — Grupo Cárdenas Rojas Valencia',
+    label: 'Mueble lavabo mármol',
+    category: 'Baños',
   },
   {
-    src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&auto=format&fit=crop&q=80',
-    alt: 'Dormitorio principal con armarios a medida y carpintería premium — Grupo Cárdenas Rojas',
-    label: 'Carpintería a medida',
-    category: 'Carpintería',
+    src: '/gallery/reforma-bano-mueble-columna-marmol-valencia.jpg',
+    alt: 'Baño con mueble lavabo, columna auxiliar y revestimiento efecto mármol de gran formato — Grupo Cárdenas Rojas Valencia',
+    label: 'Baño con columna',
+    category: 'Baños',
+  },
+  {
+    src: '/gallery/reforma-cocina-compacta-muebles-madera-valencia.jpg',
+    alt: 'Reforma de cocina compacta con muebles en madera natural, placa de inducción y encimera gris — Grupo Cárdenas Rojas Valencia',
+    label: 'Cocina compacta madera',
+    category: 'Cocinas',
+  },
+  {
+    src: '/gallery/reforma-cocina-encimera-negra-madera-valencia.jpg',
+    alt: 'Cocina reformada con encimera negra efecto piedra, fregadero integrado negro y muebles de madera clara — Grupo Cárdenas Rojas Valencia',
+    label: 'Cocina encimera negra',
+    category: 'Cocinas',
   },
 ];
 ---
@@ -66,7 +72,7 @@ const projects = [
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
       {projects.map((p, i) => (
         <div
-          class={`reveal group overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
+          class={`reveal group overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 ${i === 0 ? 'col-span-2 row-span-2' : i === projects.length - 1 ? 'col-span-3' : ''}`}
           style={`transition-delay:${i * 100}ms`}
         >
           <div class="relative overflow-hidden w-full h-full">
