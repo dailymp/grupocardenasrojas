@@ -1,0 +1,231 @@
+---
+const featuredImages = [
+  {
+    src: '/featured-projects/atico-valencia/atico-reforma-cocina-chimenea-escalera.jpg',
+    alt: 'Reforma integral de ático con cocina abierta, escalera metálica, estufa negra y acabados claros — Grupo Cárdenas Rojas Valencia',
+    label: 'Vista general con cocina abierta',
+  },
+  {
+    src: '/featured-projects/atico-valencia/atico-reforma-nevera-escalera-altillo.jpg',
+    alt: 'Detalle de acceso al altillo mediante escalera metálica negra junto a frigorífico integrado en reforma de ático',
+    label: 'Acceso al altillo',
+  },
+  {
+    src: '/featured-projects/atico-valencia/cocina-marmol-medida-atico.jpg',
+    alt: 'Cocina a medida en tonos claros con encimera efecto mármol y salpicadero continuo en ático reformado',
+    label: 'Cocina a medida efecto mármol',
+  },
+  {
+    src: '/featured-projects/atico-valencia/altillo-barandilla-cristal-escalera.jpg',
+    alt: 'Altillo con barandilla de cristal, escalera metálica negra y ventana de cubierta en reforma integral de vivienda',
+    label: 'Altillo con barandilla de cristal',
+  },
+  {
+    src: '/featured-projects/atico-valencia/salon-abierto-cocina-integrada.jpg',
+    alt: 'Salón abierto con cocina integrada bajo cubierta inclinada, iluminación cálida y escalones a medida',
+    label: 'Salón abierto y cocina integrada',
+  },
+  {
+    src: '/featured-projects/atico-valencia/cocina-bajo-cubierta-atico.jpg',
+    alt: 'Cocina compacta bajo cubierta inclinada con mobiliario claro, horno integrado y encimera continua',
+    label: 'Cocina bajo cubierta',
+  },
+  {
+    src: '/featured-projects/atico-valencia/salida-terraza-carpinteria-aluminio.jpg',
+    alt: 'Carpintería de aluminio y grandes ventanales de salida a terraza interior en ático reformado',
+    label: 'Salida a terraza interior',
+  },
+  {
+    src: '/featured-projects/atico-valencia/cerramiento-terraza-interior-atico.jpg',
+    alt: 'Cerramiento acristalado de terraza interior con iluminación indirecta y acabados modernos',
+    label: 'Cerramiento acristalado',
+  },
+  {
+    src: '/featured-projects/atico-valencia/terraza-interior-iluminacion-led.jpg',
+    alt: 'Terraza interior con carpintería acristalada, iluminación LED y revestimientos claros tras reforma integral',
+    label: 'Terraza con iluminación LED',
+  },
+  {
+    src: '/featured-projects/atico-valencia/atico-reforma-integral-vista-general.jpg',
+    alt: 'Vista general de ático reformado con cocina abierta, altillo, escalera metálica y estufa negra',
+    label: 'Reforma integral del ático',
+  },
+  {
+    src: '/featured-projects/atico-valencia/detalle-reforma-atico-01.jpg',
+    alt: 'Detalle de acabados interiores en reforma integral de ático con líneas limpias y ejecución a medida',
+    label: 'Detalle de acabados interiores',
+  },
+  {
+    src: '/featured-projects/atico-valencia/detalle-reforma-atico-02.jpg',
+    alt: 'Detalle constructivo de reforma integral de ático con acabados modernos e iluminación cuidada',
+    label: 'Detalle constructivo del proyecto',
+  },
+  {
+    src: '/featured-projects/atico-valencia/detalle-reforma-atico-03.jpg',
+    alt: 'Detalle final de reforma de ático con soluciones a medida y acabados minimalistas',
+    label: 'Detalle final de la reforma',
+  },
+];
+
+const mainImage = featuredImages[4];
+const secondaryImages = [featuredImages[2], featuredImages[6], featuredImages[3], featuredImages[8]];
+const detailImages = [featuredImages[1], featuredImages[5], featuredImages[7], featuredImages[9], featuredImages[10], featuredImages[11], featuredImages[12]];
+---
+
+<section
+  id="destacados"
+  class="relative py-24 bg-accent-950 overflow-hidden"
+  aria-labelledby="featured-projects-title"
+>
+  <div class="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-600 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-[32rem] h-[32rem] bg-white/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-[0.9fr_1.35fr] gap-12 lg:gap-16 items-center">
+      <div class="reveal-left">
+        <span class="badge-dark">Proyecto destacado</span>
+        <h2 id="featured-projects-title" class="section-title-light mt-5">
+          Reforma integral de <span class="text-brand-300">ático</span> con altillo y cocina abierta
+        </h2>
+        <div class="section-divider mt-5"></div>
+        <p class="section-subtitle-light mt-6">
+          Un espacio luminoso y técnico donde cada remate cuenta: cocina a medida, carpintería acristalada,
+          escalera metálica, barandillas de cristal e iluminación integrada para aprovechar cada rincón.
+        </p>
+
+        <dl class="grid grid-cols-2 gap-4 mt-8">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <dt class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Tipo</dt>
+            <dd class="mt-1 text-white font-display text-xl uppercase">Reforma integral</dd>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <dt class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Trabajo</dt>
+            <dd class="mt-1 text-white font-display text-xl uppercase">Ático / Loft</dd>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <dt class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Detalles</dt>
+            <dd class="mt-1 text-white font-display text-xl uppercase">Cristal y metal</dd>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <dt class="text-xs uppercase tracking-widest text-brand-300 font-semibold">Acabado</dt>
+            <dd class="mt-1 text-white font-display text-xl uppercase">Minimalista</dd>
+          </div>
+        </dl>
+
+        <a
+          href="https://wa.me/34632830169?text=Hola%2C%20he%20visto%20el%20proyecto%20destacado%20del%20%C3%A1tico%20y%20me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20para%20una%20reforma.%20Gracias."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary mt-8"
+          aria-label="Solicitar presupuesto para una reforma similar por WhatsApp"
+        >
+          Quiero una reforma similar
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="reveal-right">
+        <div class="grid grid-cols-4 gap-3 sm:gap-4 auto-rows-[120px] sm:auto-rows-[150px] lg:auto-rows-[170px]">
+          <button
+            type="button"
+            data-gallery-trigger
+            data-src={mainImage.src}
+            data-alt={mainImage.alt}
+            data-label={mainImage.label}
+            data-category="Proyecto destacado"
+            class="group col-span-4 sm:col-span-3 row-span-2 relative overflow-hidden rounded-[2rem] shadow-card-hover text-left"
+            aria-label={`Ver imagen: ${mainImage.label}`}
+          >
+            <img src={mainImage.src} alt={mainImage.alt} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-accent-950/85 via-accent-950/10 to-transparent"></div>
+            <div class="absolute left-5 right-5 bottom-5">
+              <span class="text-xs text-brand-200 font-semibold uppercase tracking-widest">Proyecto destacado</span>
+              <p class="font-display text-2xl md:text-3xl font-black text-white uppercase mt-1">Ático con cocina abierta</p>
+            </div>
+          </button>
+
+          {secondaryImages.map((image) => (
+            <button
+              type="button"
+              data-gallery-trigger
+              data-src={image.src}
+              data-alt={image.alt}
+              data-label={image.label}
+              data-category="Proyecto destacado"
+              class="group col-span-2 sm:col-span-1 row-span-1 relative overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover text-left transition-all duration-300"
+              aria-label={`Ver imagen: ${image.label}`}
+            >
+              <img src={image.src} alt={image.alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+              <div class="absolute inset-0 bg-brand-gradient opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+              <span class="absolute left-3 bottom-3 right-3 text-[10px] sm:text-xs text-white font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {image.label}
+              </span>
+            </button>
+          ))}
+
+          <button
+            type="button"
+            data-gallery-trigger
+            data-src={featuredImages[0].src}
+            data-alt={featuredImages[0].alt}
+            data-label={featuredImages[0].label}
+            data-category="Proyecto destacado"
+            class="group col-span-4 sm:col-span-2 relative overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover text-left transition-all duration-300"
+            aria-label={`Ver imagen: ${featuredImages[0].label}`}
+          >
+            <img src={featuredImages[0].src} alt={featuredImages[0].alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-r from-accent-950/80 to-transparent"></div>
+            <div class="absolute left-4 bottom-4">
+              <span class="text-xs text-brand-200 font-semibold uppercase tracking-widest">Detalle final</span>
+              <p class="font-display text-lg font-bold text-white uppercase mt-1">Cocina, altillo y estufa</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5">
+        <div>
+          <span class="text-xs text-brand-300 font-semibold uppercase tracking-widest">Galería del proyecto</span>
+          <h3 class="font-display text-2xl md:text-3xl font-black text-white uppercase mt-1">Más detalles de la ejecución</h3>
+        </div>
+        <p class="text-accent-300 max-w-xl text-sm leading-relaxed">
+          Imágenes adicionales para apreciar los encuentros, acabados y soluciones realizadas a medida.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+        {detailImages.map((image, i) => (
+          <button
+            type="button"
+            data-gallery-trigger
+            data-src={image.src}
+            data-alt={image.alt}
+            data-label={image.label}
+            data-category="Proyecto destacado"
+            class="group relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft hover:shadow-card-hover transition-all duration-300"
+            style={`transition-delay:${i * 45}ms`}
+            aria-label={`Ver imagen: ${image.label}`}
+          >
+            <img src={image.src} alt={image.alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-accent-950/0 group-hover:bg-accent-950/45 transition-colors duration-300"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6" />
+                </svg>
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
