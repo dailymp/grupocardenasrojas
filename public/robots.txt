@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://grupocardenasrojas.com/sitemap.xml
+Sitemap: https://grupocardenasrojas.com/sitemap-index.xml

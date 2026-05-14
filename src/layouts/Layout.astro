@@ -28,8 +28,20 @@ const structuredData = {
   ],
   "address": {
     "@type": "PostalAddress",
+    "addressLocality": "Valencia",
+    "addressRegion": "Comunidad Valenciana",
     "addressCountry": "ES"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.47,
+    "longitude": -0.38
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Valencia" },
+    { "@type": "AdministrativeArea", "name": "Comunidad Valenciana" },
+    { "@type": "Country", "name": "España" }
+  ],
   "image": "https://grupocardenasrojas.com/hero-bg.jpg",
   "priceRange": "€€€",
   "openingHoursSpecification": {
@@ -85,6 +97,8 @@ const structuredData = {
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
 
   <!-- Preconnect Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />

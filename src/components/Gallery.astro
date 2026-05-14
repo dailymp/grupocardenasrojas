@@ -43,49 +43,62 @@ const projects = [
     category: 'Cocinas',
   },
 ];
+
+const mainProject      = projects[0];
+const secondaryProjects = [projects[1], projects[2]];
+const wideProjects     = [projects[3], projects[4]];
+const detailProjects   = [projects[5], projects[6]];
 ---
 
 <section
   id="proyectos"
-  class="py-24 bg-warm-50 overflow-hidden"
+  class="relative py-24 bg-gradient-to-b from-brand-900 to-accent-900 overflow-hidden"
   aria-labelledby="gallery-title"
 >
-  <!-- Section header - contained width -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-14">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-      <div>
-        <div class="mb-4 reveal">
-          <span class="badge">Portfolio de proyectos</span>
-        </div>
-        <h2 id="gallery-title" class="section-title reveal">
-          Nuestros <span class="text-brand-600">trabajos</span> hablan<br class="hidden sm:block"/> por nosotros
-        </h2>
-        <div class="section-divider mt-4 reveal"></div>
-      </div>
-      <p class="section-subtitle text-left md:text-right reveal">
+  <!-- Decorative blobs -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-600 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-[32rem] h-[32rem] bg-white/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="mb-12 reveal">
+      <span class="badge-dark">Portfolio de proyectos</span>
+      <h2 id="gallery-title" class="section-title-light mt-5">
+        Nuestros <span class="text-brand-300">trabajos</span> hablan<br class="hidden sm:block"/> por nosotros
+      </h2>
+      <div class="section-divider mt-5"></div>
+      <p class="section-subtitle-light mt-4 max-w-2xl">
         Cada proyecto es una muestra de nuestro compromiso con la calidad y la atención al detalle.
       </p>
     </div>
-  </div>
 
-  <!-- Grid gallery - full width -->
-  <div class="grid grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[420px] px-4 sm:px-6 lg:px-8">
-      {projects.map((p, i) => {
-        // Desktop 6 cols — cada fila suma exactamente 6:
-        // Fila 1-2: img0(3,×2) + img1(3,×1) + img2(3,×1)
-        // Fila 3:   img3(2,×1) + img4(2,×1) + img5(2,×1)
-        // Fila 4:   img6(6,×1)
-        const spanMap: { [key: number]: string } = {
-          0: 'col-span-2 lg:col-span-3 row-span-2',
-          1: 'col-span-2 lg:col-span-3 row-span-1',
-          2: 'col-span-2 lg:col-span-3 row-span-1',
-          3: 'col-span-2 lg:col-span-2 row-span-1',
-          4: 'col-span-2 lg:col-span-2 row-span-1',
-          5: 'col-span-2 lg:col-span-2 row-span-1',
-          6: 'col-span-4 lg:col-span-6 row-span-1',
-        };
-        const span = spanMap[i] ?? 'col-span-2';
-        return (
+    <!-- Main grid -->
+    <div class="grid grid-cols-4 gap-3 sm:gap-4 auto-rows-[160px] sm:auto-rows-[180px] lg:auto-rows-[200px] reveal">
+
+      <!-- Hero image -->
+      <button
+        type="button"
+        data-gallery-trigger
+        data-src={mainProject.src}
+        data-alt={mainProject.alt}
+        data-label={mainProject.label}
+        data-category={mainProject.category}
+        class="group col-span-4 sm:col-span-3 row-span-2 relative overflow-hidden rounded-[2rem] shadow-card-hover text-left"
+        aria-label={`Ver imagen: ${mainProject.label}`}
+      >
+        <img src={mainProject.src} alt={mainProject.alt} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-accent-950/85 via-accent-950/10 to-transparent"></div>
+        <div class="absolute left-5 right-5 bottom-5">
+          <span class="text-xs text-brand-200 font-semibold uppercase tracking-widest">{mainProject.category}</span>
+          <p class="font-display text-2xl md:text-3xl font-black text-white uppercase mt-1">{mainProject.label}</p>
+        </div>
+      </button>
+
+      <!-- Secondary images (stacked right) -->
+      {secondaryProjects.map((p) => (
         <button
           type="button"
           data-gallery-trigger
@@ -93,123 +106,154 @@ const projects = [
           data-alt={p.alt}
           data-label={p.label}
           data-category={p.category}
-          class={`reveal group overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 text-left cursor-pointer ${span}`}
-          style={`transition-delay:${i * 80}ms`}
+          class="group col-span-2 sm:col-span-1 row-span-1 relative overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover text-left transition-all duration-300"
           aria-label={`Ver imagen: ${p.label}`}
         >
-          <div class="relative overflow-hidden w-full h-full">
-            <img
-              src={p.src}
-              alt={p.alt}
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
-            <!-- Overlay on hover -->
-            <div class="absolute inset-0 bg-brand-gradient opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end p-6">
-              <!-- Lupa centrada -->
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="transform scale-75 group-hover:scale-100 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/20 rounded-full p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <circle cx="11" cy="11" r="7"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                <span class="text-xs text-brand-200 font-semibold uppercase tracking-widest">{p.category}</span>
-                <p class="font-display text-xl font-bold text-white uppercase mt-1">{p.label}</p>
-              </div>
-            </div>
-            <!-- Indicador móvil (siempre visible, desaparece en hover desktop) -->
-            <div class="absolute top-3 right-3 bg-black/40 rounded-full p-1.5 group-hover:opacity-0 transition-opacity duration-300 md:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <circle cx="11" cy="11" r="7"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6"/>
-              </svg>
-            </div>
+          <img src={p.src} alt={p.alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+          <div class="absolute inset-0 bg-brand-gradient opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
+          <span class="absolute left-3 bottom-3 right-3 text-[10px] sm:text-xs text-white font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {p.label}
+          </span>
+        </button>
+      ))}
+
+      <!-- Wide images (second row) -->
+      {wideProjects.map((p) => (
+        <button
+          type="button"
+          data-gallery-trigger
+          data-src={p.src}
+          data-alt={p.alt}
+          data-label={p.label}
+          data-category={p.category}
+          class="group col-span-2 sm:col-span-2 row-span-1 relative overflow-hidden rounded-2xl shadow-card hover:shadow-card-hover text-left transition-all duration-300"
+          aria-label={`Ver imagen: ${p.label}`}
+        >
+          <img src={p.src} alt={p.alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-r from-accent-950/80 to-transparent"></div>
+          <div class="absolute left-4 bottom-4">
+            <span class="text-xs text-brand-200 font-semibold uppercase tracking-widest">{p.category}</span>
+            <p class="font-display text-lg font-bold text-white uppercase mt-1">{p.label}</p>
           </div>
         </button>
-        );
-      })}
+      ))}
     </div>
 
-    <!-- Lightbox modal -->
-    <div
-      id="gallery-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Imagen ampliada"
-      class="fixed inset-0 z-50 hidden items-center justify-center p-4"
-      style="background: rgba(0,0,0,0.75); backdrop-filter: blur(2px);"
-    >
-      <button
-        id="gallery-modal-close"
-        type="button"
-        aria-label="Cerrar imagen"
-        class="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors duration-200"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-      <!-- Prev button -->
-      <button
-        id="gallery-modal-prev"
-        type="button"
-        aria-label="Imagen anterior"
-        class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors duration-200"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
-
-      <div id="gallery-modal-inner" class="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
-        <img
-          id="gallery-modal-img"
-          src=""
-          alt=""
-          class="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl transition-opacity duration-200"
-        />
-        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-2xl">
-          <span id="gallery-modal-category" class="text-xs text-white/70 font-semibold uppercase tracking-widest"></span>
-          <p id="gallery-modal-label" class="font-display text-lg font-bold text-white uppercase mt-0.5"></p>
+    <!-- Detail strip -->
+    <div class="mt-6 reveal">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5">
+        <div>
+          <span class="text-xs text-brand-300 font-semibold uppercase tracking-widest">Más detalles</span>
+          <h3 class="font-display text-2xl md:text-3xl font-black text-white uppercase mt-1">Acabados y materiales</h3>
         </div>
+        <p class="text-accent-300 max-w-xl text-sm leading-relaxed">
+          Imágenes adicionales para apreciar la calidad de los materiales y los acabados finales.
+        </p>
       </div>
 
-      <!-- Next button -->
-      <button
-        id="gallery-modal-next"
-        type="button"
-        aria-label="Imagen siguiente"
-        class="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors duration-200"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
+      <div class="grid grid-cols-2 gap-3">
+        {detailProjects.map((p, i) => (
+          <button
+            type="button"
+            data-gallery-trigger
+            data-src={p.src}
+            data-alt={p.alt}
+            data-label={p.label}
+            data-category={p.category}
+            class="group relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-soft hover:shadow-card-hover transition-all duration-300"
+            style={`transition-delay:${i * 45}ms`}
+            aria-label={`Ver imagen: ${p.label}`}
+          >
+            <img src={p.src} alt={p.alt} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            <div class="absolute inset-0 bg-accent-950/0 group-hover:bg-accent-950/45 transition-colors duration-300"></div>
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="7" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 8v6M8 11h6" />
+                </svg>
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
     </div>
-  </div>
 
-  <!-- CTA - contained width again -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-    <div class="text-center reveal">
+    <!-- CTA -->
+    <div class="text-center mt-12 reveal">
       <a
         href="https://wa.me/34632830169?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20y%20un%20presupuesto%20sin%20compromiso%20para%20una%20obra%20o%20reforma.%20Quedo%20a%20la%20espera%20de%20vuestro%20contacto.%20Gracias."
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-outline-dark"
-        aria-label="Ver más proyectos y solicitar presupuesto"
+        class="btn-primary"
+        aria-label="Solicitar presupuesto de reforma"
       >
-        Ver más proyectos
+        Quiero una reforma similar
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
         </svg>
       </a>
     </div>
+
   </div>
+
+  <!-- Lightbox modal -->
+  <div
+    id="gallery-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Imagen ampliada"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    style="background: rgba(0,0,0,0.75); backdrop-filter: blur(2px);"
+  >
+    <button
+      id="gallery-modal-close"
+      type="button"
+      aria-label="Cerrar imagen"
+      class="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors duration-200"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <button
+      id="gallery-modal-prev"
+      type="button"
+      aria-label="Imagen anterior"
+      class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors duration-200"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+
+    <div id="gallery-modal-inner" class="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
+      <img
+        id="gallery-modal-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[85vh] rounded-2xl object-contain shadow-2xl transition-opacity duration-200"
+      />
+      <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent rounded-b-2xl">
+        <span id="gallery-modal-category" class="text-xs text-white/70 font-semibold uppercase tracking-widest"></span>
+        <p id="gallery-modal-label" class="font-display text-lg font-bold text-white uppercase mt-0.5"></p>
+      </div>
+    </div>
+
+    <button
+      id="gallery-modal-next"
+      type="button"
+      aria-label="Imagen siguiente"
+      class="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors duration-200"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
 </section>
 
 <script>
