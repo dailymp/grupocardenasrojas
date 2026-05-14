@@ -100,9 +100,15 @@ const structuredData = {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
 
-  <!-- Preconnect Google Fonts -->
+  <!-- Google Fonts: preconnect + stylesheet (no @import para evitar render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
+
+  <!-- Preload LCP resources -->
+  <link rel="preload" as="image" href="/gallery/proyecto-1.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/hero-bg.jpg" />
 
   <!-- Sitemap -->
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
